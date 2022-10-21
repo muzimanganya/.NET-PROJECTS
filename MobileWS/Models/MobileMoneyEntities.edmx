@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="POS" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="66" Nullable="false" />
+          <Property Name="Role" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Mobile" Type="nchar" MaxLength="11" />
+          <Property Name="UserKey" Type="varchar" MaxLength="100" />
+          <Property Name="UserCompany" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastBalance" Type="int" Nullable="false" />
+          <Property Name="LastReference" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastReferenceType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WalletLogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wallet" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ReferenceType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ReferenceNumber" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Users_Users_COMPANY">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_C">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_Company">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_U">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletLogs_WalletLogs_C">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="WalletLogs" Type="Self.WalletLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletLogs">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletLogs_WalletLogs_Wallet">
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+          <End Role="WalletLogs" Type="Self.WalletLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wallet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletLogs">
+              <PropertyRef Name="Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WalletLogs" EntityType="Self.WalletLogs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Users_Users_COMPANY" Association="Self.FK_Users_Users_COMPANY">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_C" Association="Self.FK_Wallet_Wallet_C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_Company" Association="Self.FK_Wallet_Wallet_Company">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_U" Association="Self.FK_Wallet_Wallet_U">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletLogs_WalletLogs_C" Association="Self.FK_WalletLogs_WalletLogs_C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WalletLogs" EntitySet="WalletLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletLogs_WalletLogs_Wallet" Association="Self.FK_WalletLogs_WalletLogs_Wallet">
+            <End Role="Wallet" EntitySet="Wallet" />
+            <End Role="WalletLogs" EntitySet="WalletLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Companies" EntityType="Models.Company" />
+          <EntitySet Name="Users" EntityType="Models.User" />
+          <EntitySet Name="Wallets" EntityType="Models.Wallet" />
+          <EntitySet Name="WalletLogs" EntityType="Models.WalletLog" />
+          <AssociationSet Name="FK_Users_Users_COMPANY" Association="Models.FK_Users_Users_COMPANY">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_Company" Association="Models.FK_Wallet_Wallet_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Wallet" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_C" Association="Models.FK_Wallet_Wallet_C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Wallet" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Wallet_U" Association="Models.FK_Wallet_Wallet_U">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Wallet" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletLogs_WalletLogs_C" Association="Models.FK_WalletLogs_WalletLogs_C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WalletLog" EntitySet="WalletLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletLogs_WalletLogs_Wallet" Association="Models.FK_WalletLogs_WalletLogs_Wallet">
+            <End Role="Wallet" EntitySet="Wallets" />
+            <End Role="WalletLog" EntitySet="WalletLogs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Models.FK_Users_Users_COMPANY" FromRole="Company" ToRole="User" />
+          <NavigationProperty Name="Wallets" Relationship="Models.FK_Wallet_Wallet_Company" FromRole="Company" ToRole="Wallet" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="66" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="UserKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company" Relationship="Models.FK_Users_Users_COMPANY" FromRole="User" ToRole="Company" />
+          <NavigationProperty Name="Wallets" Relationship="Models.FK_Wallet_Wallet_C" FromRole="User" ToRole="Wallet" />
+          <NavigationProperty Name="Wallets1" Relationship="Models.FK_Wallet_Wallet_U" FromRole="User" ToRole="Wallet" />
+          <NavigationProperty Name="WalletLogs" Relationship="Models.FK_WalletLogs_WalletLogs_C" FromRole="User" ToRole="WalletLog" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastBalance" Type="Int32" Nullable="false" />
+          <Property Name="LastReference" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastReferenceType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company1" Relationship="Models.FK_Wallet_Wallet_Company" FromRole="Wallet" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="Models.FK_Wallet_Wallet_C" FromRole="Wallet" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Models.FK_Wallet_Wallet_U" FromRole="Wallet" ToRole="User" />
+          <NavigationProperty Name="WalletLogs" Relationship="Models.FK_WalletLogs_WalletLogs_Wallet" FromRole="Wallet" ToRole="WalletLog" />
+        </EntityType>
+        <EntityType Name="WalletLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wallet" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Models.FK_WalletLogs_WalletLogs_C" FromRole="WalletLog" ToRole="User" />
+          <NavigationProperty Name="Wallet1" Relationship="Models.FK_WalletLogs_WalletLogs_Wallet" FromRole="WalletLog" ToRole="Wallet" />
+        </EntityType>
+        <Association Name="FK_Users_Users_COMPANY">
+          <End Type="Models.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="Models.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_Company">
+          <End Type="Models.Company" Role="Company" Multiplicity="1" />
+          <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_C">
+          <End Type="Models.User" Role="User" Multiplicity="1" />
+          <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wallet_Wallet_U">
+          <End Type="Models.User" Role="User" Multiplicity="1" />
+          <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletLogs_WalletLogs_C">
+          <End Type="Models.User" Role="User" Multiplicity="1" />
+          <End Type="Models.WalletLog" Role="WalletLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletLog">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletLogs_WalletLogs_Wallet">
+          <End Type="Models.Wallet" Role="Wallet" Multiplicity="1" />
+          <End Type="Models.WalletLog" Role="WalletLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wallet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletLog">
+              <PropertyRef Name="Wallet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Models.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Models.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Models.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Models.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Models.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Models.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Models.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="Models.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="POS" ColumnName="POS" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Models.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserCompany" ColumnName="UserCompany" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wallets">
+            <EntityTypeMapping TypeName="Models.Wallet">
+              <MappingFragment StoreEntitySet="Wallet">
+                <ScalarProperty Name="LastReferenceType" ColumnName="LastReferenceType" />
+                <ScalarProperty Name="LastReference" ColumnName="LastReference" />
+                <ScalarProperty Name="LastBalance" ColumnName="LastBalance" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WalletLogs">
+            <EntityTypeMapping TypeName="Models.WalletLog">
+              <MappingFragment StoreEntitySet="WalletLogs">
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="ReferenceType" ColumnName="ReferenceType" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

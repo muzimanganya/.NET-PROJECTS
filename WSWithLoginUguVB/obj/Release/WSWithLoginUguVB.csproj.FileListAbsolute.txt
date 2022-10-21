@@ -1,0 +1,10 @@
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\WSWithLoginUguVB.dll.config
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\WSWithLoginUguVB.dll
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\WSWithLoginUguVB.pdb
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\EntityFramework.dll
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\EntityFramework.SqlServer.dll
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\EntityFramework.xml
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\bin\EntityFramework.SqlServer.xml
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\obj\Release\WSWithLoginUguVB.csprojResolveAssemblyReference.cache
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\obj\Release\WSWithLoginUguVB.dll
+C:\Projects\Innovys\Projects\WSWithLoginUguVB\obj\Release\WSWithLoginUguVB.pdb

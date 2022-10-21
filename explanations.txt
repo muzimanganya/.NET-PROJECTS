@@ -1,0 +1,4 @@
+PortalNoSeatManagement -- All Customers except Trinity, KSafa, VKampala and VRwanda
+WSWithLogin-- All Customers except Trinity, KSafa, VKampala and VRwanda, VBurundi and Ugusenga
+PortalWithSeatManagement - Ksafa and trinity
+WebServiceTransitingLogin- WS for trinity

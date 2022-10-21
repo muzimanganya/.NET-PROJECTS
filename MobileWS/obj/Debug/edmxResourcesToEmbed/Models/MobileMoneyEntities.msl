@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Entities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Models.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Models.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Models.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Models.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Models.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Models.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Models.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="Models.Company">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="POS" ColumnName="POS" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Models.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserCompany" ColumnName="UserCompany" />
+          <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wallets">
+      <EntityTypeMapping TypeName="Models.Wallet">
+        <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="LastReferenceType" ColumnName="LastReferenceType" />
+          <ScalarProperty Name="LastReference" ColumnName="LastReference" />
+          <ScalarProperty Name="LastBalance" ColumnName="LastBalance" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WalletLogs">
+      <EntityTypeMapping TypeName="Models.WalletLog">
+        <MappingFragment StoreEntitySet="WalletLogs">
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="ReferenceType" ColumnName="ReferenceType" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

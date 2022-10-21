@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="AppDBContext">
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="Models.SystemUser">
+        <MappingFragment StoreEntitySet="SystemUsers">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LastChangedPass" ColumnName="LastChangedPass" />
+          <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

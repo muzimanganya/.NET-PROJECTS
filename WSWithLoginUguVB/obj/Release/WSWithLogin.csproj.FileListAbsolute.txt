@@ -1,0 +1,10 @@
+C:\Projects\Innovys\Projects\WSWithLogin\bin\WSWithLogin.dll.config
+C:\Projects\Innovys\Projects\WSWithLogin\bin\WSWithLogin.dll
+C:\Projects\Innovys\Projects\WSWithLogin\bin\WSWithLogin.pdb
+C:\Projects\Innovys\Projects\WSWithLogin\bin\EntityFramework.dll
+C:\Projects\Innovys\Projects\WSWithLogin\bin\EntityFramework.SqlServer.dll
+C:\Projects\Innovys\Projects\WSWithLogin\bin\EntityFramework.xml
+C:\Projects\Innovys\Projects\WSWithLogin\bin\EntityFramework.SqlServer.xml
+C:\Projects\Innovys\Projects\WSWithLogin\obj\Release\WSWithLogin.csprojResolveAssemblyReference.cache
+C:\Projects\Innovys\Projects\WSWithLogin\obj\Release\WSWithLogin.dll
+C:\Projects\Innovys\Projects\WSWithLogin\obj\Release\WSWithLogin.pdb

@@ -1,0 +1,12 @@
+C:\Projects\Innovys\Projects\VolcanoWS\bin\SynovysWebService.dll.config
+C:\Projects\Innovys\Projects\VolcanoWS\bin\SynovysWebService.dll
+C:\Projects\Innovys\Projects\VolcanoWS\bin\SynovysWebService.pdb
+C:\Projects\Innovys\Projects\VolcanoWS\obj\Debug\SynovysWebService.dll
+C:\Projects\Innovys\Projects\VolcanoWS\obj\Debug\SynovysWebService.pdb
+C:\Projects\Innovys\Projects\VolcanoWS\obj\Debug\VolcanoWS.csprojResolveAssemblyReference.cache
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\bin\SynovysWebService.dll.config
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\bin\SynovysWebService.dll
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\bin\SynovysWebService.pdb
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\obj\Debug\VolcanoWS.csprojResolveAssemblyReference.cache
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\obj\Debug\SynovysWebService.dll
+D:\My Own\INTUMWA\Innovys\Projects\VolcanoWS\obj\Debug\SynovysWebService.pdb

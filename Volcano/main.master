@@ -1,0 +1,60 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Account/sinoouter.master" AutoEventWireup="false" CodeFile="main.master.vb" Inherits="main" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="Styles/print.css" rel="stylesheet" media="print" />
+    <asp:ContentPlaceHolder ID="header" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+     <div id="header-box">
+        <div id="module-menu">
+			<ul id="menu">
+                <% If HttpContext.Current.User.IsInRole("restricted") Then%>
+                    <li><a href="/All-Days--Planned-Traffic.aspx">All Planned Traffic</a> </li>
+                    <li><a href="/QueryDB.aspx">Query The Database</a> </li>
+                    <li><a href="/QueryCodes.aspx">Query By A Codes</a> </li>
+                    <li><a href="/QueryCards.aspx">Query Cards</a> </li>
+                    <li class="node"><a href="/POSList.aspx">POS Machines</a></li>
+                    <li class="node"><a href="/MobileTickets.aspx">Mobile Tickets</a></li>
+                <%Else%>
+                    <li class="node"><a href="/Default.aspx">Home</a></li>
+				    <li class="node has-sub"><a href="/traffic.aspx">Traffic & Business</a>
+                        <ul>
+                            <li><a href="/traffic.aspx" class="icon-16-traffic">Traffic Overview</a> </li>
+                            <li class="separator"></li>
+                            <li><a href="/All-Days--Planned-Traffic.aspx" class="icon-16-traffic">All Planned Traffic</a> </li>
+                            <li><a href="/POSTicketing.aspx" class="icon-16-post">POS Ticketing</a> </li>
+                            <li><a href="/MobileTickets.aspx" class="icon-16-query">Mobile Tickets</a> </li>
+                            <li><a href="/POSPromotions.aspx" class="icon-16-promo">POS Promotions</a> </li>
+                            <li><a href="/Activity.aspx" class="icon-16-stats">Client Code Activity</a> </li>
+                            <li><a href="/POSBooking.aspx" class="icon-16-booking">POS Booking</a> </li>
+                            <li><a href="/POSSubscription.aspx" class="icon-16-subs">POS Subscription</a> </li>
+                            <li><a href="/QueryDB.aspx" class="icon-16-query">Query The Database</a> </li>
+                            <li><a href="/QueryCodes.aspx" class="icon-16-query">Query By Codes</a> </li>
+                            <li><a href="/QueryCards.aspx" class="icon-16-query">Query Cards</a> </li>
+                        </ul>
+				    </li>
+                    <li class="node"><a href="/Services.aspx">Services</a></li>
+                <li class="node"><a href="/POSList.aspx">POS Machines</a></li>
+                <%--<li class="node"><a href="#">Communication</a></li>--%>
+                <li class="node"><a href="/Reports/Reports.aspx">Reports</a></li>
+                <%--<li class="node"><a href="#">Help</a></li>--%>
+                 <% End If%>
+                
+			
+		    </ul>
+        </div>
+        <div id="module-status">
+			<span class="en"><asp:Label ID="eng" runat="server" Text="English"></asp:Label></span>
+            <span class="fr"><asp:Label ID="lblFr" runat="server" Text="French"></asp:Label></span>
+            <span class="rw"><a href="http://sk.innovys.co.rw"><asp:Label ID="lblRw" runat="server" Text="Kinyarwanda"></asp:Label></a></span>
+            <span class="no-unread-messages"><a href="#"><asp:Label ID="Msgs" runat="server">0</asp:Label></a></span>
+            <span class="logout"><a href="/Account/logout.aspx">Log out</a></span>
+        </div>
+        
+        <div class="clr"></div>
+    </div>
+    <asp:ContentPlaceHolder ID="content" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+

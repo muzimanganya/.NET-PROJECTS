@@ -1,0 +1,130 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Account/sinoouter.master" AutoEventWireup="false" CodeFile="Default1.aspx.vb" Inherits="_Default" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Sinovys Portal | Main Portal</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+          ['Day', 'Sales', 'Expenses'],
+          ['Monday', 1000, 400],
+          ['Teusday', 1170, 460],
+          ['Wednesday', 660, 1120],
+          ['Thursday', 1030, 540]
+        ]);
+
+            var options = {
+                title: 'Weekly Sales Trend',
+                hAxis: { title: 'Year', titleTextStyle: { color: 'red'} }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <div id="header-box">
+        <div id="module-menu">
+			<ul id="menu">
+				<li class="node"><a href="#">Traffic & Business</a>
+				</li>
+			<li class="node"><a href="#">Services</a></li>
+            <li class="node"><a href="#">Communication</a></li>
+            <li class="node"><a href="#">Reports</a></li>
+            <li class="node"><a href="#">Help</a></li>
+		    </ul>
+        </div>
+        <div id="module-status">
+			<span class="loggedin-users"><asp:Label ID="Visitors">0</asp:Label> Visitors</span>
+            <span class="backloggedin-users"><asp:Label ID="Admin">0</asp:Label> Admin</span>
+            <span class="no-unread-messages"><a href="#"><asp:Label ID="Msgs">0</asp:Label></a></span>
+            <span class="logout"><a href="#">Log out</a></span>
+        </div>
+        
+        <div class="clr"></div>
+    </div>
+    <div id="element-box">
+       <div class="m">
+        <div class="adminform">
+            <div class="cpanel-left">
+                <div id="position-icon" class="pane-sliders">
+                    <div class="panel">
+                        <h3 class="title pane-toggler-down" id="module9"><a href=""><span>Quick Access Icons</span></a></h3>
+                        <div style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; height: auto;">
+                            <div class="cpanel">
+                                <div class="icon-wrapper">
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-user.png" />
+                                            <span>Your Account Info</span>
+                                        </a>
+                                    </div>
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-module.png" />
+                                            <span>Traffic & Business</span>
+                                        </a>
+                                    </div>
+
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-article.png" />
+                                            <span>Reports</span>
+                                        </a>
+                                    </div>
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-themes.png" />
+                                            <span>Communication Portal</span>
+                                        </a>
+                                    </div>
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-user-profile.png" />
+                                            <span>Help & Support</span>
+                                        </a>
+                                    </div>
+                                    <div class="icon">
+                                        <a href="#">
+                                            <img src="Styles/icon-48-language.png" alt="language"/>
+                                            <span>Language</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cpanel-right">
+                <div id="panel-sliders" class="pane-sliders">
+                    <div class="panel">
+                        <h3 class="title pane-toggler-down" id="cpanel-panel-logged"><a href="javascript:void(0);"><span>This Weeks Sales Trend</span></a></h3>
+                        <div style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; height: auto;">
+                            <div id="chart_div" style="width:570px;height:200px"></div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="title pane-toggler" id="H1"><a href="javascript:void(0);"><span>Todays Top Sellers</span></a></h3>
+                        <div style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; height: auto;display:none;">
+                            Put an images here. Pull A Graph If Possible Using Google Charts
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="title pane-toggler" id="H2"><a href="javascript:void(0);"><span>Today's Total Sales</span></a></h3>
+                        <div style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; height: auto;display:none;">
+                            Put an images here. Pull A Graph If Possible Using Google Charts
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</asp:Content>
+

@@ -1,0 +1,65 @@
+﻿<%@ Master Language="VB" CodeFile="sinoouter.master.vb" Inherits="Account_sinoouter" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head runat="server">
+    <title>Sinnovys Portal</title>
+    <link href="~/Account/style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="sinovys" runat="server">
+    <asp:ScriptManager ID="scmOurs" EnablePartialRendering="true" runat="server" EnableCdn="true">
+    </asp:ScriptManager>
+    <div>
+        <div id="border-top" class="h_blue">
+		    <span class="title"><a href="/">Vkampala Express - Sinnovys Portal</a> </span>
+            <span class="logo">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" style="color:white !important;" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </span>
+	    </div>
+        <div id="content-box">
+            <asp:ContentPlaceHolder id="body" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clr"></div>
+        <p></p>
+        <div id="footer" style="clear:both">
+		    <p class="copyright"><a href="http://www.innovys.co.rw">Sinnovys!®</a> is a Product Of Innovys Limited. All Rights Reserved</p>
+	    </div>
+        <div id="support">
+       <%-- <!-- LiveZilla Tracking Code (ALWAYS PLACE IN BODY ELEMENT) --><div id="livezilla_tracking" style="display:none"></div><script type="text/javascript">
+/* <![CDATA[ */
+var script = document.createElement("script");script.async=true;script.type="text/javascript";var src = "http://web.innovys.co.rw/livezilla/server.php?acid=36102&request=track&output=jcrpt&ovlp=MjI_&ovlc=IzAyNTVhNQ__&ovlct=I2ZmZmZmZg__&ovlt=TGl2ZSBIZWxwIChTdGFydCBDaGF0KQ__&ovlto=TGl2ZSBIZWxwIChMZWF2ZSBNZXNzYWdlKQ__&ovls=MQ__&ovlapo=MQ__&nse="+Math.random();setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)",1);
+/* ]]> */
+</script><noscript><img src="http://web.innovys.co.rw/livezilla/server.php?acid=36102&amp;request=track&amp;output=nojcrpt&amp;ovlp=MjI_&amp;ovlc=IzAyNTVhNQ__&amp;ovlct=I2ZmZmZmZg__&amp;ovlt=TGl2ZSBIZWxwIChTdGFydCBDaGF0KQ__&amp;ovlto=TGl2ZSBIZWxwIChMZWF2ZSBNZXNzYWdlKQ__&amp;ovls=MQ__&amp;ovlapo=MQ__" width="0" height="0" style="visibility:hidden;" alt="" /></noscript>--%>
+        </div>
+    </div>
+    
+    </form>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38724610-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+</script>
+</body>
+</html>

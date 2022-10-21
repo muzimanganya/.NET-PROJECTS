@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MobileMoneyModelStoreContainer" CdmEntityContainer="MobileMoneyEntities">
+    <EntitySetMapping Name="Wallets">
+      <EntityTypeMapping TypeName="MobileMoneyModel.Wallet">
+        <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WalletLogs">
+      <EntityTypeMapping TypeName="MobileMoneyModel.WalletLog">
+        <MappingFragment StoreEntitySet="WalletLogs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

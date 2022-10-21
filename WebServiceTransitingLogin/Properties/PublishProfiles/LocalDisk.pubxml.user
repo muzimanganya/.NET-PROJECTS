@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Projects\Innovys\Outputs</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/SynovysWebService.dll">
+      <publishTime>06/02/2016 15:25:34</publishTime>
+    </File>
+    <File Include="bin/ticketing.asmx">
+      <publishTime>07/29/2015 10:15:26</publishTime>
+    </File>
+    <File Include="bin/TrinityWebService.dll">
+      <publishTime>07/23/2015 14:14:24</publishTime>
+    </File>
+    <File Include="bin/VolcanoWebService.dll">
+      <publishTime>07/17/2015 14:05:16</publishTime>
+    </File>
+    <File Include="Models/AppDB.edmx.diagram">
+      <publishTime>06/23/2015 15:39:21</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/29/2015 09:45:49</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>06/02/2016 15:25:36</publishTime>
+    </File>
+    <File Include="ticketing.asmx">
+      <publishTime>07/29/2015 10:15:26</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/02/2016 15:25:34</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

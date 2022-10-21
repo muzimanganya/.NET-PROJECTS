@@ -1,0 +1,16 @@
+﻿body {
+    margin:15px 10px;
+    padding:5px;
+}
+#border-top, #footer, #header-box, #toolbar-box, #submenu-box,#lz_overlay_chat {
+    display:none !important;
+}
+#company {
+    display:block !important;
+}
+#element-box > .m {
+    margin-top:5px;
+}
+#element-box {
+    margin-top:5px;
+}

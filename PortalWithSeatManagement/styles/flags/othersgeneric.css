@@ -1,0 +1,151 @@
+﻿div.sidebar h1 {
+    padding: 3px 0px 0px 20px;
+margin: 0px;
+height: 24px;
+font-size: 12px;
+color: #58656e;
+text-shadow: 0.1em 0.1em #fff;
+width: 293px;
+background: url(/Images/leftnav-head-bg.png) repeat-x;
+border-bottom: 1px #b9c7d0 solid;
+border-top: 1px #b9c7d0 solid;
+font-weight: bold;
+}
+div.sidebar ul {
+margin: 0px;
+padding: 0px 0px 0px 0px;
+width: 293px;
+list-style: none;
+}
+div.sidebar ul li {
+opacity: 1.0;
+display: block;
+margin-bottom: 0px;
+}
+    div.sidebar ul li a {
+        color: #666;
+display: block;
+font-family: arial,sans-serif;
+font-size: 12px;
+padding-left: 45px;
+padding-right: 15px;
+padding-top: 6px;
+padding-bottom: 7px;
+text-decoration: none;
+margin-bottom: 0px;
+font-weight: bold;
+border-bottom: 1px #e2e8ed solid;
+border-top: 0px #fff solid;
+    }
+    div.sidebar ul li a span {
+display: block;
+font-size: 9px;
+color: #8f8e8e;
+margin: 0px;
+padding: 0px;
+text-transform: none;
+}
+div.sidebar a.dataEntry {
+    background: url(/Images/library-icons.png) no-repeat 18px -70px;
+    
+}
+div.sidebar a.editData {
+    background: url(/Images/library-icons.png) no-repeat 18px -112px;
+    
+}
+div.sidebar a.jAccounts {
+    background: url(/Images/library-icons.png) no-repeat 18px -254px;
+    
+}
+div.sidebar a.jReport {
+    background: url(/Images/library-icons.png) no-repeat 18px -27px;
+    
+}
+div.sidebar a.salesReport {
+    background: url(/Images/library-icons.png) no-repeat 18px -298px;
+    
+}
+div.sidebar a.customerSales {
+    background: url(/Images/library-icons.png) no-repeat 18px -444px;
+    
+}
+div.sidebar a.customerBalances {
+    background: url(/Images/library-icons.png) no-repeat 18px -404px;
+    
+}
+div.sidebar a.customerCredit{
+    background: url(/Images/library-icons.png) no-repeat 18px -256px;
+    
+}
+div.sidebar a.editCustomer {
+    background: url(/Images/library-icons.png) no-repeat 18px -403px;
+    
+}
+div.sidebar a.listCustomer {
+    background: url(/Images/library-icons.png) no-repeat 18px -30px;
+    
+}
+div.sidebar ul li a:hover {
+color: #F90;
+}
+div.sidebar ul li.list_active {
+    opacity: 1;
+border: 0px;
+background: url(/Images/active-left-menu.png) no-repeat right;
+margin: 0 -1px 0 0px;
+}
+div.sidebar ul li.list_active a {
+color: #F60;
+border-bottom: 1px #dee4e9 solid;
+}
+.topControls {
+    background: url(/Images/yellow-pattern.png);
+width: 100%;
+border: 0px #fac94a solid;
+color: #000;
+padding: 10px 5px 10px 5px;
+}
+.formCon {
+padding: 0px;
+margin: 0px 0px 20px 0px;
+width: 100%;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+border: 0px #c2cfd8 solid;
+background: #f8fafb url(formcon-bg.png);
+border: 1px #d1e0ea solid;
+}
+.formDetails {
+padding: 0px;
+margin: 0px 0px 20px 0px;
+width: 100%;
+height:200px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+border: 0px #c2cfd8 solid;
+border: 1px #d1e0ea solid;
+overflow:scroll;
+}
+
+.ajax__tab_xp .ajax__tab_header .ajax__tab_tab {
+    height:20px !important;
+}
+.ajax__tab_xp .ajax__tab_header {
+    
+}
+.form-group {
+    margin-bottom: 7px;
+}
+.control-label {
+    padding-right:15px;
+    font-weight: 700;
+}
+table#tblReceipt tr:nth-child(even) td,table#tblReceipt tr:nth-child(even) td:hover,table#tblReceipt tr:hover td {
+    background:#fff !important;
+    
+}
+table#tblReceipt tr td {
+    text-align:center;
+}

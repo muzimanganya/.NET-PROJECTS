@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Projects\Innovys\Output</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/WSWithLogin.dll">
+      <publishTime>05/10/2016 17:21:26</publishTime>
+    </File>
+    <File Include="Models/AppDB.edmx.diagram">
+      <publishTime>07/29/2015 09:26:28</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/14/2016 09:00:27</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>05/10/2016 17:21:28</publishTime>
+    </File>
+    <File Include="ticketing.asmx">
+      <publishTime>07/29/2015 07:07:12</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/10/2016 17:04:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

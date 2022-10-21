@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MobileWS.Models.WalletLog>
+
+@{
+    ViewBag.Title = "Logs View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+<h3>Transaction Logs</h3>
+ 
+<form class="form-inline pull-right" action="@Url.Action("Logs", new { id = ViewBag.wallet })" method="POST">
+    <div class="form-group">
+        <label for="exampleInputName2">Filter Results</label>
+        @Html.DropDownList("RefTypes", (SelectList)ViewBag.RefTypes, "Select Filter", htmlAttributes: new { @class = "form-control" })
+    </div> 
+    <input class="btn btn-default" type="submit" value="Filter" />
+</form><br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Created On
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            Wallet owner
+        </th>
+        <th>
+            Created by
+        </th>
+        <th>
+            Reference
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceNumber)
+            </td>
+        </tr>
+    }
+
+</table>
+<!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Logs", new { id = ViewBag.wallet, page }))

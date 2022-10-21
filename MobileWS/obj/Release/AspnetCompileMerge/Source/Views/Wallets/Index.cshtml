@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MobileWS.Models.Wallet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Wallet Owner
+        </th>
+        <th>
+            Current balance
+        </th>
+        <th>
+            Previous Balance
+        </th>
+        <th>
+            Last Reference
+        </th>
+        <th>
+           Wallet Active
+        </th> 
+        <th>
+            Last Updated
+        </th> 
+        <th>
+            Last Updater
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>  
+            @String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0,0}", item.Amount) Rwf
+        </td>
+        <td>
+            @String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0,0}", item.LastBalance) Rwf
+        </td>
+        <td>
+            @string.Concat(item.LastReferenceType, String.Concat(" (", String.Concat(item.LastReference, ")")))
+        </td>
+        <td>
+            @if (Model == null)
+            {
+                <text>Not Set</text>
+            }
+            else
+            {
+                if (item.IsActive==1)
+                {
+                    <text>Yes</text>
+                }
+                else
+                {
+                    <text>No</text>
+                }
+            }
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedOn)
+        </td>           
+        <td>
+            @Html.DisplayFor(modelItem => item.User1.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Logs", "Logs", new { id = item.ID }) | 
+            @Html.ActionLink("Topup", "Topup") 
+        </td>
+    </tr>
+}
+
+</table>

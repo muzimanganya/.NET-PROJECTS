@@ -1,0 +1,12 @@
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\ticketing.asmx
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\ticketing.asmx.cs
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\SynovysWebService.dll.config
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\SynovysWebService.dll
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\SynovysWebService.pdb
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\EntityFramework.dll
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\EntityFramework.SqlServer.dll
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\EntityFramework.xml
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\bin\EntityFramework.SqlServer.xml
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\obj\Release\WebServiceTransitingLogin.csprojResolveAssemblyReference.cache
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\obj\Release\SynovysWebService.dll
+C:\Projects\Innovys\Projects\WebServiceTransitingLogin\obj\Release\SynovysWebService.pdb

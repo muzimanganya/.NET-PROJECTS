@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALUbzjbIwBEOZm9mtnJyYnwAAAAACAAAAAAAQZgAAAAEAACAAAABsVgSW06m7qWtjFw3+DnyJyjKMKJgjyZhzzNgiXBNmSAAAAAAOgAAAAAIAACAAAADiQZxtXhA2HNjIqF0Cb++gBN428klRpj08DIAsPI3OASAAAAByvw87gO479N2XOoXAwoX6U89jWnN07B/CwUCvVYdzY0AAAAAK+d0HE3GmsdAgEbdJECkWEKhIle8wCN2XiQ7HF/otDCQZTD9JdIE4iHTej0/L0Fede6erXib7v0YOBwinUC+m</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/TrinityWebService.dll">
+      <publishTime>04/15/2014 02:11:02</publishTime>
+    </File>
+    <File Include="ticketing.asmx">
+      <publishTime>10/21/2013 15:22:25</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/15/2014 02:11:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

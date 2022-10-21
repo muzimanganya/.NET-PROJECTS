@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Companies" EntityType="Models.Company" />
+    <EntitySet Name="Users" EntityType="Models.User" />
+    <EntitySet Name="Wallets" EntityType="Models.Wallet" />
+    <EntitySet Name="WalletLogs" EntityType="Models.WalletLog" />
+    <AssociationSet Name="FK_Users_Users_COMPANY" Association="Models.FK_Users_Users_COMPANY">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Wallet_Company" Association="Models.FK_Wallet_Wallet_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Wallet" EntitySet="Wallets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Wallet_C" Association="Models.FK_Wallet_Wallet_C">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Wallet" EntitySet="Wallets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Wallet_U" Association="Models.FK_Wallet_Wallet_U">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Wallet" EntitySet="Wallets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WalletLogs_WalletLogs_C" Association="Models.FK_WalletLogs_WalletLogs_C">
+      <End Role="User" EntitySet="Users" />
+      <End Role="WalletLog" EntitySet="WalletLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WalletLogs_WalletLogs_Wallet" Association="Models.FK_WalletLogs_WalletLogs_Wallet">
+      <End Role="Wallet" EntitySet="Wallets" />
+      <End Role="WalletLog" EntitySet="WalletLogs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="POS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Models.FK_Users_Users_COMPANY" FromRole="Company" ToRole="User" />
+    <NavigationProperty Name="Wallets" Relationship="Models.FK_Wallet_Wallet_Company" FromRole="Company" ToRole="Wallet" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="66" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="UserKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Company" Relationship="Models.FK_Users_Users_COMPANY" FromRole="User" ToRole="Company" />
+    <NavigationProperty Name="Wallets" Relationship="Models.FK_Wallet_Wallet_C" FromRole="User" ToRole="Wallet" />
+    <NavigationProperty Name="Wallets1" Relationship="Models.FK_Wallet_Wallet_U" FromRole="User" ToRole="Wallet" />
+    <NavigationProperty Name="WalletLogs" Relationship="Models.FK_WalletLogs_WalletLogs_C" FromRole="User" ToRole="WalletLog" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastBalance" Type="Int32" Nullable="false" />
+    <Property Name="LastReference" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastReferenceType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Company1" Relationship="Models.FK_Wallet_Wallet_Company" FromRole="Wallet" ToRole="Company" />
+    <NavigationProperty Name="User" Relationship="Models.FK_Wallet_Wallet_C" FromRole="Wallet" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Models.FK_Wallet_Wallet_U" FromRole="Wallet" ToRole="User" />
+    <NavigationProperty Name="WalletLogs" Relationship="Models.FK_WalletLogs_WalletLogs_Wallet" FromRole="Wallet" ToRole="WalletLog" />
+  </EntityType>
+  <EntityType Name="WalletLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Wallet" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Action" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Models.FK_WalletLogs_WalletLogs_C" FromRole="WalletLog" ToRole="User" />
+    <NavigationProperty Name="Wallet1" Relationship="Models.FK_WalletLogs_WalletLogs_Wallet" FromRole="WalletLog" ToRole="Wallet" />
+  </EntityType>
+  <Association Name="FK_Users_Users_COMPANY">
+    <End Type="Models.Company" Role="Company" Multiplicity="0..1" />
+    <End Type="Models.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserCompany" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Wallet_Company">
+    <End Type="Models.Company" Role="Company" Multiplicity="1" />
+    <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="Company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Wallet_C">
+    <End Type="Models.User" Role="User" Multiplicity="1" />
+    <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wallet_Wallet_U">
+    <End Type="Models.User" Role="User" Multiplicity="1" />
+    <End Type="Models.Wallet" Role="Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WalletLogs_WalletLogs_C">
+    <End Type="Models.User" Role="User" Multiplicity="1" />
+    <End Type="Models.WalletLog" Role="WalletLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WalletLog">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WalletLogs_WalletLogs_Wallet">
+    <End Type="Models.Wallet" Role="Wallet" Multiplicity="1" />
+    <End Type="Models.WalletLog" Role="WalletLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WalletLog">
+        <PropertyRef Name="Wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,33 @@
+﻿.SubTotalRowStyle{
+    border:solid 1px #CCC;
+    
+    font-weight:bold;
+}
+.GrandTotalRowStyle{
+    font-weight:bold;
+    font-size:larger;
+}
+    .GroupDetailsStyle{
+    color: #146295;
+font-size: 1.182em;
+font-weight: bold;
+}
+    .GroupHeaderStyle{
+    text-align: center;
+background: #F7F7F7;
+color: #666;
+border-bottom: 1px solid #CCC;
+border-left: 1px solid white;
+padding: 4px;
+color: #025A8D;
+text-decoration: none;
+outline: none;
+}        
+.Spliter
+{
+    border-left:none;
+    border-right:none;
+}
+.alignCenter {
+    text-align:center !important;
+}

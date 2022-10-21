@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MobileMoneyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MobileMoneyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="MobileMoneyModel.User" />
+    <EntitySet Name="Wallets" EntityType="MobileMoneyModel.Wallet" />
+    <EntitySet Name="WalletLogs" EntityType="MobileMoneyModel.WalletLog" />
+    <AssociationSet Name="FK_WalletLogs_WalletLogs_Wallet" Association="MobileMoneyModel.FK_WalletLogs_WalletLogs_Wallet">
+      <End Role="Wallet" EntitySet="Wallets" />
+      <End Role="WalletLog" EntitySet="WalletLogs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="66" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="WalletLogs" Relationship="MobileMoneyModel.FK_WalletLogs_WalletLogs_Wallet" FromRole="Wallet" ToRole="WalletLog" />
+  </EntityType>
+  <EntityType Name="WalletLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Wallet" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Action" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Wallet1" Relationship="MobileMoneyModel.FK_WalletLogs_WalletLogs_Wallet" FromRole="WalletLog" ToRole="Wallet" />
+  </EntityType>
+  <Association Name="FK_WalletLogs_WalletLogs_Wallet">
+    <End Type="MobileMoneyModel.Wallet" Role="Wallet" Multiplicity="1" />
+    <End Type="MobileMoneyModel.WalletLog" Role="WalletLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WalletLog">
+        <PropertyRef Name="Wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

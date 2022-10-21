@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="sinoouter.master.cs" Inherits="Account_sinoouter" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Sinnovys Portal</title>
+    <link href="~/Account/style/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="sinovys" runat="server">
+    <asp:ScriptManager ID="scmOurs" EnablePartialRendering="true" runat="server" EnableCdn="false">
+    </asp:ScriptManager>
+    <div>
+        <div id="border-top" class="h_blue">
+		    <span class="title"><a href="/">Invoices | Sinnovys Portal</a> </span>
+            <span class="logo">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" style="color:white !important;" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </span>
+	    </div>
+        <div id="content-box">
+            <asp:ContentPlaceHolder id="body" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clr"></div>
+        <p></p>
+        <div id="footer" style="clear:both">
+		    <p class="copyright"><a href="http://www.innovys.co.rw">Sinnovys!®</a> is a Product Of Innovys Limited. All Rights Reserved</p>
+	    </div>
+        <div id="support">
+        
+        </div>
+    </div>
+    
+    </form>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38724610-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+</script>
+</body>
+</html>

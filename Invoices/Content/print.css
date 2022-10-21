@@ -1,0 +1,10 @@
+.printfloat {
+	float:right;
+}
+.container {
+				background: url("bootstrap/img/watermark.png") 50%;
+				background-repeat: no-repeat;
+			}
+.hide {
+	display: none;
+}

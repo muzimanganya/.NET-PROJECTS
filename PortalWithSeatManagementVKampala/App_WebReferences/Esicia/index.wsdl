@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://gateway.esicia.com/soap/ksms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://gateway.esicia.com/soap/ksms" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://gateway.esicia.com/soap/ksms">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ksendRequest">
+    <wsdl:part name="account" type="xsd:string" />
+    <wsdl:part name="pin" type="xsd:string" />
+    <wsdl:part name="sender" type="xsd:string" />
+    <wsdl:part name="message" type="xsd:string" />
+    <wsdl:part name="phone" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ksendResponse">
+    <wsdl:part name="reply" type="xsd:string" />
+    <wsdl:part name="balance" type="xsd:string" />
+    <wsdl:part name="status" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="kchkRequest">
+    <wsdl:part name="account" type="xsd:string" />
+    <wsdl:part name="pin" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="kchkResponse">
+    <wsdl:part name="reply" type="xsd:string" />
+    <wsdl:part name="balance" type="xsd:string" />
+    <wsdl:part name="status" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="kchangeRequest">
+    <wsdl:part name="account" type="xsd:string" />
+    <wsdl:part name="newpin" type="xsd:string" />
+    <wsdl:part name="pin" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="kchangeResponse">
+    <wsdl:part name="reply" type="xsd:string" />
+    <wsdl:part name="status" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="ksmsPortType">
+    <wsdl:operation name="ksend">
+      <documentation>This service is about sending sms</documentation>
+      <wsdl:input message="tns:ksendRequest" />
+      <wsdl:output message="tns:ksendResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="kchk">
+      <documentation>This service is about checking the remaining sms balance</documentation>
+      <wsdl:input message="tns:kchkRequest" />
+      <wsdl:output message="tns:kchkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="kchange">
+      <documentation>This service is about changing the PIN of your soap account</documentation>
+      <wsdl:input message="tns:kchangeRequest" />
+      <wsdl:output message="tns:kchangeResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ksmsBinding" type="tns:ksmsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ksend">
+      <soap:operation soapAction="urn:ksend" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ksend" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ksend" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kchk">
+      <soap:operation soapAction="urn:kchk" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:kchk" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:kchk" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kchange">
+      <soap:operation soapAction="urn:kchange" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:kchange" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:kchange" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ksms">
+    <wsdl:port name="ksmsPort" binding="tns:ksmsBinding">
+      <soap:address location="http://gateway.esicia.com/index.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
